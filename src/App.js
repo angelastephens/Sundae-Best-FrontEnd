@@ -1,52 +1,32 @@
-import React from 'react'
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
-} from 'react-router-dom'
-import SundaeIndexContainer from './containers/SundaeIndexContainer'
-import SundaeFormContainer from './containers/SundaeFormContainer'
-import SundaeDetailsContainer from './containers/SundaeDetailsContainer'
+  NavLink
+} from "react-router-dom";
+import SundaeIndexContainer from "./containers/SundaeIndexContainer";
+import SundaeFormContainer from "./containers/SundaeFormContainer";
+import SundaeDetailsContainer from "./containers/SundaeDetailsContainer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className='App'>
       <Router>
-        <nav className="text-center bg-blue-900 text-yellow-100 p-4">
-          <NavLink
-            className="inline-block px-4 py-2"
-            activeClassName="text-yellow-300"
-            exact
-            to="/"
-          >
-            Sundaes
-          </NavLink>
-          <NavLink
-            className="inline-block px-4 py-2"
-            activeClassName="text-yellow-300"
-            exact
-            to="/sundae/new"
-          >
-            New Sundae
-          </NavLink>
-        </nav>
+        <Navbar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <SundaeIndexContainer />
           </Route>
-            <Route path="/sundae/new">
-            <SundaeFormContainer />
-          </Route>
-          <Route path="/sundaes/:id">
-            <SundaeDetailsContainer />
-          </Route>
+          <Route path='/sundae/new' component={SundaeFormContainer} />
+          <Route path='/sundaes/:id' component={SundaeDetailsContainer} />
         </Switch>
+          <Footer />
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
-
+export default App;
