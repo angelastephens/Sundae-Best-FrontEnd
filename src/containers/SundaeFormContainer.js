@@ -1,53 +1,112 @@
-function SundaeForm() {
-    const handleSubmit = event => {
-        event.preventDefault();
-        fetch('http://localhost:3001/sundaes', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({"sundae":{
-        "name": document.getElementById("name").value,
-        "scoops": document.getElementById("scoops").value,
-        "ice_cream_flavors": document.getElementById("ice_cream_flavors").value,
-        "toppings": document.getElementById("toppings").value,
-        
-    }})
-    })
-    .then (response => {
-        if(response.ok){ 
-            alert('You have submitted the form.')
-            document.getElementById("new_sundae").reset()
-        } else {
-            alert("form submission failed ")
-            return response.text().then(error => Promise.reject(error))
-        }
-    })
-    
-      }
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createSundae } from "../actions/sundaes";
 
-      
-    return(
-      <div className="wrapper">
-        <h1>Create Your Favorite Sundae</h1>
-        <form onSubmit={handleSubmit} id="new_sundae">
+class SundaeFormContainer extends Component {
+  state = {
+    name: "",
+    scoops: "",
+    ice_cream_flavors: "",
+    toppings: ""
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.dispatchCreateSundae(this.state).then((sundaeJson) => {
+      this.props.history.push("/");
+    });
+  };
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   fetch("http://localhost:3001/sundaes", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({ sundae: this.state })
+  //   })
+  //     .then((res) => res.json())
+  //     .then((sundaeJson) => {
+  //       this.props.history.push("/");
+
+  //     });
+  // };
+
+  render() {
+    return (
+      <form
+        onSubmit={this.handleSubmit}
+        className='max-w-6xl w-2/4 mx-auto mt-16 shadow-lg px-4 py-6 mb-4'
+      >
+        <h1 className='text-center text-3xl font-semibold mb-2'>
+          Create Your Favorite Sundae
+        </h1>
         <fieldset>
-           <label>
-             <p>Name</p>
-             <input name="name" id="name" />
-             <p>Pick your scoops</p>
-             <input name="scoops" id="scoops" />
-             <p>Pick your Ice Cream Flavors</p>
-             <input name="ice_cream_flavors" id="ice_cream_flavors" />
-             <p>Pick your Toppings</p>
-             <input name="toppings" id="toppings" />
-           </label>
-         </fieldset>
-         <button type="submit">Submit</button>
-        </form>
-      </div>
-    )
+          <input
+            type='text'
+            name='name'
+            onChange={this.handleChange}
+            value={this.state.name}
+            placeholder='Name Your Sundae'
+            className='w-full border p-4 my-4'
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            type='text'
+            name='scoops'
+            onChange={this.handleChange}
+            value={this.state.scoops}
+            placeholder='Pick your number of scoops'
+            className='w-full border p-4 my-4'
+          />
+        </fieldset>
+
+        <fieldset>
+          <input
+            type='text'
+            name='ice_cream_flavors'
+            onChange={this.handleChange}
+            value={this.state.ice_cream_flavors}
+            placeholder='Pick your ice cream flavors'
+            className='w-full border p-4 my-4'
+          />
+        </fieldset>
+
+        <fieldset>
+          <input
+            type='text'
+            name='toppings'
+            onChange={this.handleChange}
+            value={this.state.toppings}
+            placeholder='Enter your toppings'
+            className='w-full border p-4 my-4'
+          />
+        </fieldset>
+        <button
+          className='w-full p-4 bg-pink-300 mt-4 hover:bg-blue-400 transition-all duration-200'
+          type='submit'
+        >
+          Add SundaeForm
+        </button>
+      </form>
+    );
+  }
 }
 
-export default SundaeForm
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchCreateSundae: (formData) => dispatch(createSundae(formData))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SundaeFormContainer);
