@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { fetchSundae } from "../actions/sundaes";
+import SundaeDetailswithBorder from '../components/SundaeDetailswithBorder';
 
 
 class SundaeDetailsContainer extends React.Component {
@@ -52,15 +53,19 @@ class SundaeDetailsContainer extends React.Component {
    
     }
     return (
-      <div className='max-w-6xl w-3/4 mx-auto '>
-        <h1 className='text-3xl'> Sundae Ingredients</h1>
-        <ul className=' border-dotted border-4 border-light-blue-500 mt-4 shadow-lg px-4 py-6 mb-4 w-1/2'>
-          {this.props.sundae.name} <br />
-          Number of Scoops: {this.props.sundae.scoops} <br />
-          Ice Cream Flavors: {this.props.sundae.ice_cream_flavors} <br />
-          Toppings: {this.props.sundae.toppings}
-        </ul>
+      <div>
+        <SundaeDetailswithBorder sundae={this.props.sundae} />
       </div>
+
+      // <div className='max-w-6xl w-3/4 mx-auto '>
+      //   <h1 className='text-3xl'> Sundae Ingredients</h1>
+      //   <ul className=' border-dotted border-4 border-light-blue-500 mt-4 shadow-lg px-4 py-6 mb-4 w-1/2'>
+      //     {this.props.sundae.name} <br />
+      //     Number of Scoops: {this.props.sundae.scoops} <br />
+      //     Ice Cream Flavors: {this.props.sundae.ice_cream_flavors} <br />
+      //     Toppings: {this.props.sundae.toppings}
+      //   </ul>
+      // </div>
     );
   }
 }
