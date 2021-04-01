@@ -24,7 +24,7 @@ Available as open source under the terms of the MIT license.
 This project created with Create React App.
 ### Available Scripts in the project directory, you can run:
 - Yarn start runs the app in the development mode
-  Open http://localhost:3001 to view it in the browser.
+  Open http://localhost:3000 to view it in the browser.
   The page will reload if you make edits. You will also see any lint errors in the console.
 - yarn test
   Launches the test runner in the interactive watch mode.
