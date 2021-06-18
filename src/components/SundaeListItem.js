@@ -1,21 +1,40 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import { addVote } from "../actions/sundaes";
 
-const SundaeListItem = ({ sundae }) => {
-  return (
-    <li
-      className='border-dotted border-4 border-yellow-200 max-w-6xl w-2/4 my-8 shadow-md px-4 py-6'
-      key={sundae.id}
-    >
-      <Link to={`/sundaes/${sundae.id}`}>
-        <strong> Name: </strong> {sundae.name}{" "}
-      </Link>
-      {/* Scoop count {sundae.scoops}
-      Ice Cream Flavors {sundae.ice_cream_flavors}<br/>
-      Toppings {sundae.toppings}<br/>
-      Like Count {sundae.like_count} */}
-    </li>
+
+
+class SundaeListItem extends React.Component {
+  increment = () => {
+   this.props.dispatchAddVote(this.props.sundae.id);
+  }
+
+  render() {
+    return (
+      <li
+        className='border-dotted border-4 border-yellow-200 max-w-6xl w-2/4 my-8 shadow-md px-4 py-6'
+        key={this.props.sundae.id}
+      >
+        <Link to={`/sundaes/${this.props.sundae.id}`}>
+          <strong> Name: </strong> {this.props.sundae.name}{" "}
+        </Link>
+        <button className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'
+          onClick={this.increment}> Cheer for this Sundae: {this.props.sundae.like_count} </button>
+      </li>
   );
+  }
 }
 
-export default SundaeListItem
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+    dispatchAddVote: (sundaeId) => dispatch(addVote(sundaeId))
+  };
+};
+  
+// export default SundaeListItem
+export default connect(
+  null,
+  mapDispatchToProps
+)(SundaeListItem);
