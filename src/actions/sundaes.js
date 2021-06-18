@@ -1,6 +1,7 @@
 import { START_LOADING_SUNDAE, SUCCESSFULLY_LOADED_SUNDAE } from "./index";
 import { START_LOADING_SUNDAES, SUCCESSFULLY_LOADED_SUNDAES } from "./index";
 import { SUCCESSFULLY_CREATED_SUNDAE } from "./index";
+import { SUCCESSFULLY_ADD_VOTE } from "./index";
 
 export const fetchSundae = (sundaeId) => {
   return (dispatch) => {
@@ -16,14 +17,16 @@ export const fetchSundae = (sundaeId) => {
   };
 };
 
-export const fetchSundaes = () => {
-  return (dispatch) => {
-    dispatch({ type: START_LOADING_SUNDAES});
+export const fetchSundaes = () => { 
+  return (dispatch) => {  // start of redux thunk/middleware
+    console.log("c");
+    dispatch({ type: START_LOADING_SUNDAES}); //starts a new circle of redux flow 
     fetch(`http://localhost:3001/sundaes`)
       .then((res) => res.json())
       .then((sundaesJson) => {
+        console.log("d")
         dispatch({
-          type: SUCCESSFULLY_LOADED_SUNDAES,
+          type: SUCCESSFULLY_LOADED_SUNDAES,  //inside asynchronous function 
           payload: sundaesJson
         });
       });
@@ -50,5 +53,29 @@ export const createSundae = (formData) => {
   };
 };
 
+
+export const addVote = (sundaeId) => {
+
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/sundaes/${sundaeId}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+      
+    })
+      .then((res) => res.json())
+      .then((sundaeJson) => {
+        dispatch({
+          type: SUCCESSFULLY_ADD_VOTE,
+          payload: sundaeJson
+        });
+      });
+  };
+};
+
+
+ 
 
 
