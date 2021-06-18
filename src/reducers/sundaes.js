@@ -3,6 +3,7 @@ import {
   SUCCESSFULLY_LOADED_SUNDAES,
   SUCCESSFULLY_LOADED_SUNDAE,
   SUCCESSFULLY_CREATED_SUNDAE,
+  SUCCESSFULLY_ADD_VOTE,
   FAILED_LOADING_SUNDAES,
   ADD_SUNDAE
 } from "../actions";
@@ -10,8 +11,17 @@ const initialState = {
   loadingState: "notStarted",
   list: [],
   sundae: {}
-  
 };
+
+// export default function counterReducer(state = { count: 0 }, action) {
+//   switch (action.type) {
+//     case 'ADD':
+//       return {
+//         ...state,
+//         count: state.count + 1
+//       }
+//   }
+// }
 
 export default function sundaesReducer(state = initialState, action) {
   switch (action.type) {
@@ -22,7 +32,7 @@ export default function sundaesReducer(state = initialState, action) {
       const sundae = action.payload;
       return {
         ...state,
-        loadingState: false,
+        loadingState: "successful",
 
         list: sundae
       };
@@ -30,22 +40,29 @@ export default function sundaesReducer(state = initialState, action) {
       // spread out the previous state into a new object literal and set loadingState to "inProgress"
       return {
         ...state,
-        loadingState: false,
+        loadingState: "successful",
 
         sundae: action.payload
       };
-    
+
     case SUCCESSFULLY_CREATED_SUNDAE:
       return {
         ...state,
-        list:[...state.list, action.payload]
+        list: [...state.list, action.payload]
       };
-    // case SUCCESSFULLY_LOADED_SUNDAES:
-    //   return {
-    //     list: action.payload,
-    //     loadingState: "successful"
-    //   };
-    default:
+
+    case SUCCESSFULLY_ADD_VOTE:
+      return {
+        ...state,
+        list: state.list.map((sundae) => {   //new state, returning a new state based on the old state and the action that dispatched
+          if (sundae.id !== action.payload.id) {
+            return sundae; //(return the original sundae that was in the list in state)
+          }
+          return action.payload; // return the updated sundae that was liked 
+        })
+      };
+
+    default:  // if we dispatch an action that this reducer doesnt care about then we will return the original state
       return state;
   }
 }
