@@ -1,47 +1,33 @@
-// import React, { Component } from 'react'
-// import SundaeList from '../components/SundaeList'
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSundaes } from "../actions/sundaes";
 import SundaeList from "../components/SundaeList";
 class SundaeIndexContainer extends Component {
-  
   componentDidMount() {
-     this.props.dispatchFetchSundaes()
+    console.log("a");
+    this.props.dispatchFetchSundaes();
+    console.log("b");
   }
-  //   fetch('http://localhost:3001/sundaes', {
-  //     method: 'get',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //     .then(res => res.json())
-  //     .then(sundaesJson => {
-  //       console.log('sundaes', sundaesJson)
-  //       this.setState({
-  //         sundaes: sundaesJson,
-  //         loading: false
-  //       })
-  //     })
-  // }
+
   
 
   render() {
     return (
-      <section className="max-w-6xl mx-auto mt-16">
-        {this.props.loadingState === 'inProgress' ? (
-          'loading sundaes'
+      <section className='max-w-6xl mx-auto mt-16'>
+        {this.props.loadingState === "inProgress" ? (
+          "loading sundaes"
         ) : (
-          <SundaeList sundaes={this.props.sundaes} />
+          <SundaeList sundaes={this.props.sundaes} foo={"goodbye"} />
         )}
       </section>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    count: state.count,
     sundaes: state.sundaes.list,
     loadingState: state.sundaes.loadingState
   };
@@ -49,11 +35,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchFetchSundaes: () => dispatch(fetchSundaes())
+    dispatchFetchSundaes: () => dispatch(fetchSundaes()),
+    // dispatchAddVote: (sundaeId) => dispatch(addVote(sundaeId))
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  
 )(SundaeIndexContainer);
