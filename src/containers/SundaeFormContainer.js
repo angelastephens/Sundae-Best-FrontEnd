@@ -23,22 +23,7 @@ class SundaeFormContainer extends Component {
     });
   };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   fetch("http://localhost:3001/sundaes", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({ sundae: this.state })
-  //   })
-  //     .then((res) => res.json())
-  //     .then((sundaeJson) => {
-  //       this.props.history.push("/");
-
-  //     });
-  // };
+  
 
   render() {
     return (
