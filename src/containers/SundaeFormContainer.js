@@ -80,7 +80,7 @@ class SundaeFormContainer extends Component {
           className='w-full p-4 bg-pink-300 mt-4 hover:bg-blue-400 transition-all duration-200'
           type='submit'
         >
-          Add SundaeForm
+          Add Your Best Sundae
         </button>
       </form>
     );
