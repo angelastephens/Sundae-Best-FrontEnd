@@ -5,9 +5,9 @@ import { fetchSundaes } from "../actions/sundaes";
 import SundaeList from "../components/SundaeList";
 class SundaeIndexContainer extends Component {
   componentDidMount() {
-    console.log("a");
+    
     this.props.dispatchFetchSundaes();
-    console.log("b");
+    
   }
 
   
@@ -18,7 +18,7 @@ class SundaeIndexContainer extends Component {
         {this.props.loadingState === "inProgress" ? (
           "loading sundaes"
         ) : (
-          <SundaeList sundaes={this.props.sundaes} foo={"goodbye"} />
+          <SundaeList sundaes={this.props.sundaes}  />
         )}
       </section>
     );
