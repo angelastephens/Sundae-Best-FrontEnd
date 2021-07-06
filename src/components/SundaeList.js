@@ -6,11 +6,7 @@ const SundaeList = ({ sundaes, foo }) => {
     return b.like_count - a.like_count;
   });
 
-  // const mostLikeSundaes = sundaes.filter(function (sundae) {
-  //   return sundae.like_count > 15;
-  // });
-
-  // mostLikeSundaes;
+ 
 
   return (
     <>
@@ -28,3 +24,11 @@ const SundaeList = ({ sundaes, foo }) => {
 };
 
 export default SundaeList;
+
+
+
+ // const mostLikeSundaes = sundaes.filter(function (sundae) {
+  //   return sundae.like_count > 15;
+  // });
+
+  // mostLikeSundaes;
