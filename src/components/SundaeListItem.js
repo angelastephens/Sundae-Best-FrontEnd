@@ -13,7 +13,7 @@ class SundaeListItem extends React.Component {
   render() {
     return (
       <li
-        className='border-dotted border-4 border-yellow-200 max-w-6xl w-2/4 my-8 shadow-md px-4 py-6'
+        className='border-dotted border-4 border-purple-400 max-w-6xl w-2/4 my-8 shadow-md px-4 py-6'
         key={this.props.sundae.id}
       >
         <Link to={`/sundaes/${this.props.sundae.id}`}>
