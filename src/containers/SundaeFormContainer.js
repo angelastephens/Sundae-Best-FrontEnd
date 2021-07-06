@@ -77,7 +77,7 @@ class SundaeFormContainer extends Component {
           />
         </fieldset>
         <button
-          className='w-full p-4 bg-pink-300 mt-4 hover:bg-blue-400 transition-all duration-200'
+          className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'
           type='submit'
         >
           Add Your Best Sundae
