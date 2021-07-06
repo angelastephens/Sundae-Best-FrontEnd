@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className='text-center bg-pink-900 text-yellow-100 p-4'>
+    <nav className='text-center bg-pink-400 text-yellow-900 p-4'>
       <NavLink
         className='inline-block px-4 py-2'
         activeClassName='text-yellow-300'
         exact
         to='/'
       >
-        Sundaes
+        All Sundaes
       </NavLink>
       <NavLink
         className='inline-block px-4 py-2'
