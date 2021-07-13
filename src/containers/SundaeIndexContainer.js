@@ -16,7 +16,7 @@ class SundaeIndexContainer extends Component {
     return (
       <section className='max-w-6xl mx-auto mt-16'>
         {this.props.loadingState === "inProgress" ? (
-          "loading sundaes"
+          "waiting for sundaes"
         ) : (
           <SundaeList sundaes={this.props.sundaes}  />
         )}
