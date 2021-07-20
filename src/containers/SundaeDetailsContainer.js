@@ -35,7 +35,7 @@ const mapStateToProps = (state, { match }) => {
   }
 
 };
-const mapDispatchToProps = (dispatch) => { //function that takes in sundaeId, dispatch action return   thunk lets me dispatch a function, and will call it for me , without thunk i can only dispatch objects 
+const mapDispatchToProps = (dispatch) => {  
   return {
     dispatchFetchSundae: (sundaeId) => dispatch(fetchSundae(sundaeId))
   };
