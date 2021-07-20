@@ -5,6 +5,7 @@ const SundaeList = ({ sundaes, foo }) => {
   const sortedSundaes = sundaes.sort(function (a, b) {
     return b.like_count - a.like_count;
   });
+  
 
  
 
