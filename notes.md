@@ -42,3 +42,7 @@ class SundaeListItem extends React.Component {
     );
   }
 }
+
+
+
+//function that takes in sundaeId, dispatch action return   thunk lets me dispatch a function, and will call it for me , without thunk i can only dispatch objects
