@@ -40,7 +40,7 @@ class SundaeFormContainer extends Component {
             name='name'
             onChange={this.handleChange}
             value={this.state.name}
-            placeholder='Give Your Sundae A Name'
+            placeholder='Give your Sundae a name'
             className='w-full border p-4 my-4'
           />
         </fieldset>
