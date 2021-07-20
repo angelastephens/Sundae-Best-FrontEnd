@@ -10,6 +10,13 @@ class SundaeListItem extends React.Component {
    this.props.dispatchAddVote(this.props.sundae.id);
   }
 
+  decreaseCounter = () => {
+    // if the counter is greater than 1, reduce it
+    if (this.state.counter >= 1) {
+      this.setState({ counter: this.state.counter - 1 });
+    };
+  }
+
   render() {
     return (
       <li
@@ -17,7 +24,7 @@ class SundaeListItem extends React.Component {
         key={this.props.sundae.id}
       >
         <Link to={`/sundaes/${this.props.sundae.id}`}>
-          <strong> Name: </strong> {this.props.sundae.name}{" "}
+          <strong> Sundae Name: </strong> {this.props.sundae.name}{" "}
         </Link>
         <button
           className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'
@@ -26,6 +33,12 @@ class SundaeListItem extends React.Component {
           {" "}
           <strong>Cheer for this Sundae:</strong> {this.props.sundae.like_count}{" "}
           total cheers{" "}
+        </button>
+        <button
+          className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'
+          onClick={() => this.decreaseCounter()}
+        >
+          Boo for this Sundae: {this.props.sundae.like_count-1}
         </button>
       </li>
     );
