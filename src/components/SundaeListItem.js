@@ -38,7 +38,7 @@ class SundaeListItem extends React.Component {
           className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'
           onClick={() => this.decreaseCounter()}
         >
-          Boo for this Sundae: {this.props.sundae.like_count-1}
+          Boo for this Sundae: {this.props.sundae.like_count - this.props.sundae.like_count}
         </button>
       </li>
     );
