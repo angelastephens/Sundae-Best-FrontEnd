@@ -4,6 +4,7 @@ import {
   SUCCESSFULLY_LOADED_SUNDAE,
   SUCCESSFULLY_CREATED_SUNDAE,
   SUCCESSFULLY_ADD_VOTE,
+  SUCCESSFULLY_BOO_VOTE,
   FAILED_LOADING_SUNDAES,
   ADD_SUNDAE
 } from "../actions";
@@ -54,15 +55,28 @@ export default function sundaesReducer(state = initialState, action) {
     case SUCCESSFULLY_ADD_VOTE:
       return {
         ...state,
-        list: state.list.map((sundae) => {   //new state, returning a new state based on the old state and the action that dispatched
+        list: state.list.map((sundae) => {
+          //new state, returning a new state based on the old state and the action that dispatched
           if (sundae.id !== action.payload.id) {
             return sundae; //(return the original sundae that was in the list in state)
           }
-          return action.payload; // return the updated sundae that was liked 
+          return action.payload; // return the updated sundae that was liked
         })
       };
 
-    default:  // if we dispatch an action that this reducer doesnt care about then we will return the original state
+    case SUCCESSFULLY_BOO_VOTE:
+      return {
+        ...state,
+        list: state.list.map((sundae) => {
+          //new state, returning a new state based on the old state and the action that dispatched
+          if (sundae.id !== action.payload.id) {
+            return sundae; //(return the original sundae that was in the list in state)
+          }
+          return action.payload; // return the updated sundae that was liked
+        })
+      };
+    default:
+      // if we dispatch an action that this reducer doesnt care about then we will return the original state
       return state;
   }
 }
