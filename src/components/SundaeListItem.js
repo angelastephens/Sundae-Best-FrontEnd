@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
-import { addVote } from "../actions/sundaes";
+import { addVote, booVote }from "../actions/sundaes";
+
 
 
 
@@ -10,12 +11,10 @@ class SundaeListItem extends React.Component {
    this.props.dispatchAddVote(this.props.sundae.id);
   }
 
-  decreaseCounter = () => {
-    // if the counter is greater than 1, reduce it
-    if (this.state.counter >= 1) {
-      this.setState({ counter: this.state.counter - 1 });
-    };
-  }
+  booCounter = () => {
+    this.props.dispatchBooVote(this.props.sundae.id);
+
+  };
 
   render() {
     return (
@@ -36,9 +35,9 @@ class SundaeListItem extends React.Component {
         </button>
         <button
           className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'
-          onClick={() => this.decreaseCounter()}
+          onClick={() => this.booCounter()}
         >
-          Boo for this Sundae: {this.props.sundae.like_count - this.props.sundae.like_count}
+          <strong>Boo for this Sundae: </strong> {this.props.sundae.boo_vote}
         </button>
       </li>
     );
@@ -48,7 +47,8 @@ class SundaeListItem extends React.Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     
-    dispatchAddVote: (sundaeId) => dispatch(addVote(sundaeId))
+    dispatchAddVote: (sundaeId) => dispatch(addVote(sundaeId)),
+    dispatchBooVote: (sundaeId) => dispatch(booVote(sundaeId))
   };
 };
   
