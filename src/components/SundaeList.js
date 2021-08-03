@@ -28,8 +28,3 @@ export default SundaeList;
 
 
 
- // const mostLikeSundaes = sundaes.filter(function (sundae) {
-  //   return sundae.like_count > 15;
-  // });
-
-  // mostLikeSundaes;
