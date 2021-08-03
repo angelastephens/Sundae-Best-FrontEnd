@@ -2,6 +2,8 @@ import { START_LOADING_SUNDAE, SUCCESSFULLY_LOADED_SUNDAE } from "./index";
 import { START_LOADING_SUNDAES, SUCCESSFULLY_LOADED_SUNDAES } from "./index";
 import { SUCCESSFULLY_CREATED_SUNDAE } from "./index";
 import { SUCCESSFULLY_ADD_VOTE } from "./index";
+import { SUCCESSFULLY_BOO_VOTE } from "./index";
+
 
 export const fetchSundae = (sundaeId) => {
   return (dispatch) => {
@@ -69,6 +71,26 @@ export const addVote = (sundaeId) => {
       .then((sundaeJson) => {
         dispatch({
           type: SUCCESSFULLY_ADD_VOTE,
+          payload: sundaeJson
+        });
+      });
+  };
+};
+
+
+export const booVote = (sundaeId) => {
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/sundaes/${sundaeId}/boo`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then((sundaeJson) => {
+        dispatch({
+          type: SUCCESSFULLY_BOO_VOTE,
           payload: sundaeJson
         });
       });
