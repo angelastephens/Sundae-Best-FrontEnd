@@ -8,7 +8,7 @@ const SundaeDetailswithBorder = ({sundae}) => {
         {sundae.name} <br />
         Number of Scoops: {sundae.scoops} <br />
         Ice Cream Flavors: {sundae.ice_cream_flavors} <br />
-        Toppings: {sundae.toppings}
+        Topping Type: {sundae.toppings}
       </ul>
     </div>
   );
