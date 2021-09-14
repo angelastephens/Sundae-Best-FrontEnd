@@ -18,7 +18,7 @@ function Navbar() {
         exact
         to='/sundae/new'
       >
-        Create a Sundae
+        Create New Sundae
       </NavLink>
     </nav>
   );
