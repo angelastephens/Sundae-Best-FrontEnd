@@ -83,7 +83,7 @@ class SundaeFormContainer extends Component {
           Add Your Amazing Sundae
         </button>
         <li className='w-full p-4 bg-pink-300 mt-4 hover:bg-purple-400 transition-all duration-200'>
-          <strong>Most Used Ingredients: </strong> {this.state.toppings.total}
+          <strong>Most Used Ingredients:{this.state.toppings.all} </strong>
         </li>
       </form>
     );
