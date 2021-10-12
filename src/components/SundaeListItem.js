@@ -30,7 +30,7 @@ class SundaeListItem extends React.Component {
           onClick={this.increment}
         >
           {" "}
-          <strong>Cheer for this Sundae:</strong> {this.props.sundae.like_count}{" "}
+          <strong>Celebrate for this Sundae:</strong> {this.props.sundae.like_count}{" "}
           total cheers{" "}
         </button>
         <button
