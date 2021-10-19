@@ -14,7 +14,7 @@ class SundaeDetailsContainer extends React.Component {
 
   render() {
     if (this.props.loading) {
-      return <div> Looking for Sundaes</div>
+      return <div> Searching for Sundaes</div>
    
     }
     return (
