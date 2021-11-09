@@ -11,7 +11,7 @@ const SundaeList = ({ sundaes, foo }) => {
 
   return (
     <>
-      <h1 className='text-3xl'> Sweet Amazing Sundaes</h1>
+      <h1 className='text-3xl'>  Fantastic Sundaes</h1>
       <h1> {foo} </h1>
 
       
