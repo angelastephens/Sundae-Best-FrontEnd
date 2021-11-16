@@ -32,7 +32,7 @@ class SundaeFormContainer extends Component {
         className='max-w-6xl w-2/4 mx-auto mt-16 shadow-lg px-4 py-6 mb-4'
       >
         <h1 className='text-center text-3xl font-semibold mb-2'>
-          Create Your Favorite Sundae
+          Create Your Best Sundae
         </h1>
         <fieldset>
           <input
