@@ -10,7 +10,7 @@ function Navbar() {
         exact
         to='/'
       >
-        All The Yummy in the Tummy Sundaes
+        All The Yummy in the  Sundaes
       </NavLink>
       <NavLink
         className='inline-block px-4 py-2'
