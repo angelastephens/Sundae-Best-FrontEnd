@@ -6,7 +6,7 @@ function Navbar() {
     <nav className='text-center bg-pink-400 text-blue-900 p-4'>
       <NavLink
         className='inline-block px-4 py-2'
-        activeClassName='text-yellow-300'
+        activeClassName='text-blue-300'
         exact
         to='/'
       >
